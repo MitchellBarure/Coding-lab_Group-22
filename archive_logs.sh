@@ -25,4 +25,15 @@ case "$choice" in
     ;;
 esac
 
+active_path="Hospital_data/actice_logs/$LOG_FILE"
+archive_path="hospital_data/archived_logs/$ARCHIVE_FOLDER"
 
+if [ ! -f "$active_path" ]; then 
+	echo "ERROR:Active log file '$log_filee'not found."
+	exit 1
+fi
+
+if[ ! -d "$archive_path" ];
+	echo "ERROR: Active folder '$archive_path' not found"
+	exit 1
+fi 
