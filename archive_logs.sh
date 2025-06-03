@@ -37,3 +37,24 @@ if[ ! -d "$archive_path" ];
 	echo "ERROR: Active folder '$archive_path' not found"
 	exit 1
 fi 
+
+timestamp=$(date"+%Y-%m-%d_%H-%M-%S")
+
+new_name="${log_file%.log}_$timestamp.log"
+
+echo "Archiving $log_file"
+if mv "$active_path" "$archive_path/$new_name"; then 
+	echo "Successfully archived to $archive_folder/$new_name"
+
+else 
+     echo "ERROR:failed to archive the file"
+     exit 1
+fi
+
+if touch "$active_path"; then 
+	echo "New empty log file created: $log_file"
+else 
+	echo "ERROR: failed to create a new log file"
+	exit 1
+fi
+
