@@ -50,5 +50,6 @@ mkdir -p "$ARCHIVE_DIR/$ARCHIVE_SUBDIR"
 mv "$LOG_DIR/$LOG_FILE" "$ARCHIVE_DIR/$ARCHIVE_SUBDIR/${LOG_FILE%.log}_$TIMESTAMP.log"
 touch "$LOG_DIR/$LOG_FILE"
 
+echo "Archiving heart_rate.log..."
 echo "Successfully archived '$LOG_FILE' to '$ARCHIVE_DIR/$ARCHIVE_SUBDIR/${LOG_FILE%.log}_$TIMESTAMP.log'"
 
