@@ -1,60 +1,55 @@
 #!/bin/bash
 
-echo "Which log do you want to archive?"
-echo "1) Heart Rate"
-echo "2) Temperature"
-echo "3) Water Usage"
-read -p "Enter 1, 2, or 3: " choice
+# Define log file paths
+LOG_DIR="hospital_data/active_logs"
+ARCHIVE_DIR="hospital_data/archived_logs"
 
-case "$choice" in
-  1)
-    LOG_FILE="heart_rate.log"
-    ARCHIVE_SUBDIR="heart_data_archive"
-    ;;
-  2)
-    LOG_FILE="temperature.log"
-    ARCHIVE_SUBDIR="temperature_data_archive"
-    ;;
-  3)
-    LOG_FILE="water_usage.log"
-    ARCHIVE_SUBDIR="water_usage_data_archive"
-    ;;
-  *)
-    echo "Invalid choice."
-    exit 1
-    ;;
+# Ensure archive directory exists
+mkdir -p "$ARCHIVE_DIR"
+
+# Display menu
+echo "Select log to archive:"
+echo "1) Heart Rate (heart_rate.log)"
+echo "2) Temperature (temperature.log)"
+echo "3) Water Usage (water_usage.log)"
+read -p "Enter choice (1-3): " choice
+
+# Get current timestamp
+TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
+
+# Process user selection
+case $choice in
+    1)
+        LOG_FILE="heart_rate.log"
+        ARCHIVE_SUBDIR="heart_data_archive"
+        ;;
+    2)
+        LOG_FILE="temperature.log"
+        ARCHIVE_SUBDIR="temperature_data_archive"
+        ;;
+    3)
+        LOG_FILE="water_usage.log"
+        ARCHIVE_SUBDIR="water_data_archive"
+        ;;
+    *)
+        echo "Invalid selection. Please choose 1, 2, or 3."
+        exit 1
+        ;;
 esac
 
-active_path="Hospital_data/actice_logs/$LOG_FILE"
-archive_path="hospital_data/archived_logs/$ARCHIVE_FOLDER"
-
-if [ ! -f "$active_path" ]; then 
-	echo "ERROR:Active log file '$log_filee'not found."
-	exit 1
+# Validate log file existence
+if [ ! -f "$LOG_DIR/$LOG_FILE" ]; then
+    echo "Error: Log file '$LOG_FILE' not found."
+    exit 1
 fi
 
-if[ ! -d "$archive_path" ];
-	echo "ERROR: Active folder '$archive_path' not found"
-	exit 1
-fi 
+# Ensure specific archive folder exists
+mkdir -p "$ARCHIVE_DIR/$ARCHIVE_SUBDIR"
 
-timestamp=$(date"+%Y-%m-%d_%H-%M-%S")
+# Archive log file
+mv "$LOG_DIR/$LOG_FILE" "$ARCHIVE_DIR/$ARCHIVE_SUBDIR/${LOG_FILE%.log}_$TIMESTAMP.log"
+touch "$LOG_DIR/$LOG_FILE"
 
-new_name="${log_file%.log}_$timestamp.log"
-
-echo "Archiving $log_file"
-if mv "$active_path" "$archive_path/$new_name"; then 
-	echo "Successfully archived to $archive_folder/$new_name"
-
-else 
-     echo "ERROR:failed to archive the file"
-     exit 1
-fi
-
-if touch "$active_path"; then 
-	echo "New empty log file created: $log_file"
-else 
-	echo "ERROR: failed to create a new log file"
-	exit 1
-fi
+echo "Archiving heart_rate.log..."
+echo "Successfully archived '$LOG_FILE' to '$ARCHIVE_DIR/$ARCHIVE_SUBDIR/${LOG_FILE%.log}_$TIMESTAMP.log'"
 
