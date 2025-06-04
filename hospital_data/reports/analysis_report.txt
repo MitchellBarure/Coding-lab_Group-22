@@ -19,3 +19,11 @@ Last Entry :
 --- Analysis of heart_rate.log on Wed 04 Jun 2025 03:45:01 AM PDT ---
 First Entry: 
 Last Entry : 
+
+--- Analysis of water_usage.log on Wed 04 Jun 2025 03:49:27 AM PDT ---
+First Entry: 
+Last Entry : 
+
+--- Analysis of heart_rate.log on Wed 04 Jun 2025 03:52:06 AM PDT ---
+First Entry: 
+Last Entry : 
