@@ -9,7 +9,7 @@ report_file="$base_dir/hospital_data/reports/analysis_report.txt"
 #asking for user's choice
 
 echo "Select a log file to analyze:"
-echo "1) Heart Rate (heart_rate.log)"
+echo "1) Heart Rate (heart_rat.log)"
 echo "2) Temperature (temperature.log)"
 echo "3) Water usage (water_usage.log)"
 read -p "Select your choice (1-3): " choice
@@ -18,7 +18,6 @@ read -p "Select your choice (1-3): " choice
 
 case $choice  in 
   1) file="heart_rate.log" ;;
-  1) file="heart_rate_log.log" ;;
   2) file="temperature.log" ;;
   3) file="water_usage.log" ;;
   *) echo "Invalid Input."; exit 1 ;;
