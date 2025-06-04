@@ -18,6 +18,7 @@ read -p "Select your choice (1-3): " choice
 
 case $choice  in 
   1) file="heart_rate.log" ;;
+  1) file="heart_rate_log.log" ;;
   2) file="temperature.log" ;;
   3) file="water_usage.log" ;;
   *) echo "Invalid Input."; exit 1 ;;
