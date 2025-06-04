@@ -55,4 +55,3 @@ else
     echo "Failed to create new log file"
     exit 1
 fi
-
