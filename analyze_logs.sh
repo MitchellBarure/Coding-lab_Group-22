@@ -18,8 +18,8 @@ read -p "Select your choice (1-3): " choice
 
 case $choice  in 
   1) file="heart_rate_log.log" ;;
-  2) file="temperature_log.log" ;;
-  3) file="water_usage_log.log" ;;
+  2) file="temperature.log" ;;
+  3) file="water_usage.log" ;;
   *) echo "Invalid Input."; exit 1 ;;
 esac
 
@@ -33,3 +33,24 @@ else
  echo "Log file does not exist: $file_path"
  exit 1
 fi
+
+#analyzing $logfile
+mkdir -p reports
+
+# Ensure logfile is defined and exists
+if [ -z "$logfile" ] || [ ! -f "$logfile" ]; then
+    echo "Error: Log file '$logfile' is missing or undefined."
+    exit 1
+fi
+
+# Output to terminal and file
+echo "Analyzing $logname log..."
+
+# Write to report file
+{
+    echo "------------------------------------------"
+    echo "📄 Report for $logname log - $(date)"
+    echo "Device Name        | Count"
+    echo "-------------------------"
+    awk '{ print $2 }' "$logfile" | sort | uniq -c | awk '{printf "%-20s %s\n", $2, $1}'
+} >> reports/analysis_report.txt
