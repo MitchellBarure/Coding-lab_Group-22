@@ -35,3 +35,11 @@ Last Entry :
 --- Analysis of heart_rate_log.log on Wed 04 Jun 2025 04:17:03 AM PDT ---
 First Entry: 
 Last Entry : 
+
+--- Analysis of heart_rate_log.log on Wed 04 Jun 2025 04:20:05 AM PDT ---
+First Entry: 
+Last Entry : 
+
+--- Analysis of temperature_log.log on Wed 04 Jun 2025 01:15:39 PM PDT ---
+First Entry: 
+Last Entry : 
