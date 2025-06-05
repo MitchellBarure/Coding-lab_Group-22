@@ -10,13 +10,13 @@ read -p "Enter choice (1-3): " choice
 
 
 if [ "$choice" = "1" ]; then
-    log_file="heart_rate.log"
+    log_file="heart_rate_log.log"
     archive_subdir="heart_data_archive"
 elif [ "$choice" = "2" ]; then
-    log_file="temperature.log"
+    log_file="temperature_log.log"
     archive_subdir="temperature_data_archive"
 elif [ "$choice" = "3" ]; then
-    log_file="water_usage.log"
+    log_file="water_usage_log.log"
     archive_subdir="water_data_archive"
 else
     echo "Invalid Choice, Please choose either 1, 2, or 3"
@@ -55,4 +55,3 @@ else
     echo "Failed to create new log file"
     exit 1
 fi
-
