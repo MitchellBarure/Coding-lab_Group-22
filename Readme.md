@@ -19,5 +19,17 @@ mv which moves the active log file from its original location to the archive dir
 touch creates a new empty log file in the active logs directory after the original has been removed 
 mkdir for creating directories 
 exit terminate the script 
+ 
+#script 2 analyze_logs.sh
+this script provides an interactive interface to analyze collected log data.it counts device occurences within selected log file anf records timestamps of the first and last entries appending the results to analysis report 
+. the script presents a menu for selecting which log file to analyze 
+. it counts the occurence of each device in the selected log file 
+. appends the results to reports/analysis_report.txt
+the commands used for this script are;
+cat displays the content of the log file 
+awk used to extract timestamps from structured log file 
+sort sorts the lines of input in a certain order 
+uniq -c displays unique lines 
+ 
 
 
